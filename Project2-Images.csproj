@@ -5,4 +5,9 @@
     <RootNamespace>Project2_Images</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
