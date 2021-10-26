@@ -1,13 +1,17 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Project2_Images.Models;
+using Project2_Images.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Project2_Images.Data;
 
 namespace Project2_Images
 {
@@ -23,7 +27,27 @@ namespace Project2_Images
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //"Data Source=KyleDesktop;Initial Catalog=dealership;Integrated Security=True;Pooling=False"
+            //"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Project2_ImageShare;Integrated Security=True;Pooling=False"
+            //services.AddDbContext<ImageContext>(o => o.UseSqlServer();
+
+            /*
+              services.AddScoped<IVehicleRepository, VehicleRepository>();
+            
+            services.AddControllers();
+
+            services.AddDbContext<VehicleContext>(o => o.UseSqlServer("Data Source=KyleDesktop;Initial Catalog=dealership;Integrated Security=True;Pooling=False"));
+             */
+            services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddDbContext<ImageContext>(o => o.UseSqlServer("Data Source=MSSQLLocalDB;Initial Catalog=Project2_ImageShare;Integrated Security=True;Pooling=False"));
+            services.AddControllers();
             services.AddRazorPages();
+
+            services.AddDbContext<Project2_ImagesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Project2_ImagesContext")));
+
+            services.AddDbContext<Project2_UserContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Project2_UserContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

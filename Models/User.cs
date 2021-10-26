@@ -7,7 +7,7 @@ namespace Project2_Images.Models
 {
     public class User
     {
+        public int Id { get; set; }
         public string email { get; set; }
-        public int userId { get; set; } 
     }
 }
