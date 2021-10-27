@@ -9,6 +9,7 @@ namespace Project2_Images.Models
     {
 
         public int ID { get; set; }
+
         public string FileName { get; set; }
         public DateTime CreationDate { get; set; }
         public int Uploader { get; set; }

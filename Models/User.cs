@@ -9,5 +9,8 @@ namespace Project2_Images.Models
     {
         public int Id { get; set; }
         public string email { get; set; }
+
+
+
     }
 }

@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Project2_Images.Models;
-using Project2_Images.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,8 +37,6 @@ namespace Project2_Images
 
             services.AddDbContext<VehicleContext>(o => o.UseSqlServer("Data Source=KyleDesktop;Initial Catalog=dealership;Integrated Security=True;Pooling=False"));
              */
-            services.AddScoped<IImageRepository, ImageRepository>();
-            services.AddDbContext<ImageContext>(o => o.UseSqlServer("Data Source=MSSQLLocalDB;Initial Catalog=Project2_ImageShare;Integrated Security=True;Pooling=False"));
             services.AddControllers();
             services.AddRazorPages();
 
