@@ -26,17 +26,6 @@ namespace Project2_Images
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //"Data Source=KyleDesktop;Initial Catalog=dealership;Integrated Security=True;Pooling=False"
-            //"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Project2_ImageShare;Integrated Security=True;Pooling=False"
-            //services.AddDbContext<ImageContext>(o => o.UseSqlServer();
-
-            /*
-              services.AddScoped<IVehicleRepository, VehicleRepository>();
-            
-            services.AddControllers();
-
-            services.AddDbContext<VehicleContext>(o => o.UseSqlServer("Data Source=KyleDesktop;Initial Catalog=dealership;Integrated Security=True;Pooling=False"));
-             */
             services.AddControllers();
             services.AddRazorPages();
 
