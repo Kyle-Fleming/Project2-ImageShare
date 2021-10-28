@@ -38,12 +38,30 @@ namespace Project2_Images.Migrations
                     b.Property<string>("GeoTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Uploader")
-                        .HasColumnType("int");
+                    b.Property<string>("Uploader")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
                     b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("Project2_Images.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

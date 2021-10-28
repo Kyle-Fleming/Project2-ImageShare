@@ -13,9 +13,9 @@ namespace Project2_Images.Pages.Users
 {
     public class EditModel : PageModel
     {
-        private readonly Project2_Images.Data.Project2_UserContext _context;
+        private readonly Project2_Images.Data.Project2_ImagesContext _context;
 
-        public EditModel(Project2_Images.Data.Project2_UserContext context)
+        public EditModel(Project2_Images.Data.Project2_ImagesContext context)
         {
             _context = context;
         }

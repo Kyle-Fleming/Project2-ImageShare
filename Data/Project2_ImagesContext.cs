@@ -16,5 +16,7 @@ namespace Project2_Images.Data
         }
 
         public DbSet<Project2_Images.Models.Image> Image { get; set; }
+
+        public DbSet<Project2_Images.Models.User> User { get; set; }
     }
 }

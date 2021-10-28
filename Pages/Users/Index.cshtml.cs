@@ -12,9 +12,9 @@ namespace Project2_Images.Pages.Users
 {
     public class IndexModel : PageModel
     {
-        private readonly Project2_Images.Data.Project2_UserContext _context;
+        private readonly Project2_Images.Data.Project2_ImagesContext _context;
 
-        public IndexModel(Project2_Images.Data.Project2_UserContext context)
+        public IndexModel(Project2_Images.Data.Project2_ImagesContext context)
         {
             _context = context;
         }
