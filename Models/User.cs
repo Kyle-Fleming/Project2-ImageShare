@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Project2_Images.Models
 {
@@ -12,11 +9,15 @@ namespace Project2_Images.Models
 
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        
+
         public string UserName { get; set; }
 
         [DataType(DataType.Password)]
-        protected string UserPassword { get; set; }
+        public string UserPassword { get; set; }
+
+        public Image[] Collection { get; set; }
+
+        public Object[,] Album { get; set; }
 
     }
 }

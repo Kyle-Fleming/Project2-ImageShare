@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Project2_Images.Models
 {
@@ -13,7 +10,7 @@ namespace Project2_Images.Models
 
         public string FileName { get; set; }
 
-        [Display(Name ="Creation Date")]
+        [Display(Name = "Creation Date")]
         [DataType(DataType.Date)]
         public DateTime CreationDate { get; set; }
 
@@ -24,5 +21,8 @@ namespace Project2_Images.Models
         public string GeoTag { get; set; }
 
         public string FileType { get; set; }
+
+
+        public User[] GrantedAccess { get; set; }
     }
 }
