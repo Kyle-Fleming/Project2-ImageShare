@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Project2_Images.Models
@@ -22,7 +23,6 @@ namespace Project2_Images.Models
 
         public string FileType { get; set; }
 
-
-        public User[] GrantedAccess { get; set; }
+        public DbSet<User> GrantedAccess { get; set; }
     }
 }

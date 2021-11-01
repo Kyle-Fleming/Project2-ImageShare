@@ -17,7 +17,7 @@ namespace Project2_Images.Models
 
         public Image[] Collection { get; set; }
 
-        public Object[,] Album { get; set; }
+        
 
     }
 }

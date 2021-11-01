@@ -15,7 +15,7 @@ namespace Project2_Images.Pages.Users
             _context = context;
         }
 
-        public IList<User> User { get; set; }
+        public new IList<User> User { get; set; }
 
         public async Task OnGetAsync()
         {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project2_Images.Data;
 
 namespace Project2_Images.Migrations
 {
     [DbContext(typeof(Project2_ImagesContext))]
-    partial class Project2_ImagesContextModelSnapshot : ModelSnapshot
+    [Migration("20211101130702_AddAlbumModelToDB")]
+    partial class AddAlbumModelToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
