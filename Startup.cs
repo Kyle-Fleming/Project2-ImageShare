@@ -25,9 +25,6 @@ namespace Project2_Images
 
             services.AddDbContext<Project2_ImagesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Project2_ImagesContext")));
-
-            services.AddDbContext<Project2_UserContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Project2_UserContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

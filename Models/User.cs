@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Project2_Images.Models
@@ -15,7 +16,7 @@ namespace Project2_Images.Models
         [DataType(DataType.Password)]
         public string UserPassword { get; set; }
 
-        public Image[] Collection { get; set; }
+        public DbSet<Image> Collection { get; set; }
 
         
 

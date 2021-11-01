@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace Project2_Images.Models
 {
@@ -22,6 +23,8 @@ namespace Project2_Images.Models
         public string GeoTag { get; set; }
 
         public string FileType { get; set; }
+
+        public byte[] AdvertisementAsset { get; set; }
 
         public DbSet<User> GrantedAccess { get; set; }
     }
