@@ -19,11 +19,17 @@ namespace Project2_Images.Models
         //TODO:  public int Uploader { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Uploader { get; set; }
+        
+        [Display(Name = "Captured by")]
+        public string CapturedBy { get; set; }
 
         public string GeoTag { get; set; }
 
         public string FileType { get; set; }
 
+        public string Tags { get; set; }
+        
+        [Display(Name = "Image File")]
         public byte[] AdvertisementAsset { get; set; }
 
         public DbSet<User> GrantedAccess { get; set; }

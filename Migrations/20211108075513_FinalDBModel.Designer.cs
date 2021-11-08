@@ -10,8 +10,8 @@ using Project2_Images.Data;
 namespace Project2_Images.Migrations
 {
     [DbContext(typeof(Project2_ImagesContext))]
-    [Migration("20211101130702_AddAlbumModelToDB")]
-    partial class AddAlbumModelToDB
+    [Migration("20211108075513_FinalDBModel")]
+    partial class FinalDBModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,15 +46,10 @@ namespace Project2_Images.Migrations
                     b.Property<string>("AlbumName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GrantedAcessId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Uploader")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("GrantedAcessId");
 
                     b.ToTable("Album");
                 });
@@ -66,8 +61,14 @@ namespace Project2_Images.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<byte[]>("AdvertisementAsset")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<int?>("AlbumID")
                         .HasColumnType("int");
+
+                    b.Property<string>("CapturedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -79,6 +80,9 @@ namespace Project2_Images.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GeoTag")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tags")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Uploader")
@@ -130,15 +134,6 @@ namespace Project2_Images.Migrations
                         .HasForeignKey("GrantedAccessId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Project2_Images.Models.Album", b =>
-                {
-                    b.HasOne("Project2_Images.Models.User", "GrantedAcess")
-                        .WithMany()
-                        .HasForeignKey("GrantedAcessId");
-
-                    b.Navigation("GrantedAcess");
                 });
 
             modelBuilder.Entity("Project2_Images.Models.Image", b =>
