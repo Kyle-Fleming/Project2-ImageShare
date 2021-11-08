@@ -23,10 +23,19 @@
                 @Html.DisplayNameFor(model => model.Image[0].Uploader)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Image[0].CapturedBy)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Image[0].GeoTag)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image[0].FileType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image[0].Tags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image[0].AdvertisementAsset)
             </th>
             <th></th>
         </tr>
@@ -44,10 +53,19 @@
                 @Html.DisplayFor(modelItem => item.Uploader)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.CapturedBy)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.GeoTag)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FileType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvertisementAsset)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
