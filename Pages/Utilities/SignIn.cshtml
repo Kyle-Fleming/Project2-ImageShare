@@ -1,4 +1,25 @@
 ﻿@page
 @model Project2_Images.Pages.Utilities.SignInModel
 @{
+    ViewData["Title"] = "Sign In";
+}
+<form action="action_page.php" method="post">
+
+    <div class="text-center">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+    </div>
+
+    <div class="text-center">
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+    </div>
+
+    <div class="text-center">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
