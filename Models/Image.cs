@@ -16,7 +16,6 @@ namespace Project2_Images.Models
         [DataType(DataType.Date)]
         public DateTime CreationDate { get; set; }
 
-        //TODO:  public int Uploader { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Uploader { get; set; }
         
@@ -25,11 +24,10 @@ namespace Project2_Images.Models
 
         public string GeoTag { get; set; }
 
-        public string FileType { get; set; }
-
         public string Tags { get; set; }
         
         [Display(Name = "Image File")]
+        [DataType(DataType.Upload)]
         public byte[] AdvertisementAsset { get; set; }
 
         public DbSet<User> GrantedAccess { get; set; }
