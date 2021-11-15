@@ -45,13 +45,17 @@
                 <span asp-validation-for="Image.Tags" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-action="UploadImage" asp-controller="Home" method="post" enctype="multipart/form-data">Upload
-                    <input type="file" id="file1" name="file1" multiple="multiple" />
+                <label asp-for="Image.AdvertisementAsset" class="control-label"></label>
+                <label asp-action="UploadImage" asp-controller="Home" method="post" enctype="multipart/form-data">
+                    Upload
+                    <input type="file" id="file1" name="file1" />
                 </label>
+                <span asp-validation-for="Image.AdvertisementAsset" class="text-danger"></span>
                 
+
                 <!--<label asp-for="image.advertisementasset" class="control-label"></label>
-                <input asp-for="image.advertisementasset" class="form-control" />
-                <span asp-validation-for="image.advertisementasset" class="text-danger"></span>-->
+    <input asp-for="image.advertisementasset" class="form-control" />
+    <span asp-validation-for="image.advertisementasset" class="text-danger"></span>-->
 
             </div>
             <div class="form-group">
@@ -67,4 +71,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

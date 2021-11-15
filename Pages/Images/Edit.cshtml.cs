@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -68,7 +69,33 @@ namespace Project2_Images.Pages.Images
 
             return RedirectToPage("./Index");
         }
+        public async Task<IActionResult> UploadImage()
+        {
+            foreach (var file in Request.Form.Files)
+            {
+                Image img = new Image();
+                img.FileName = file.FileName;
 
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                img.AdvertisementAsset = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+
+                _context.Image.Add(img);
+                await _context.SaveChangesAsync();
+            }
+            return Page();
+        }
+
+        public ActionResult RetrieveImage()
+        {
+            Image img = _context.Image.OrderByDescending(i => i.ID).SingleOrDefault();
+            string imageBase64Data = Convert.ToBase64String(img.AdvertisementAsset);
+            string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+            return Page();
+        }
         private bool ImageExists(int id)
         {
             return _context.Image.Any(e => e.ID == id);

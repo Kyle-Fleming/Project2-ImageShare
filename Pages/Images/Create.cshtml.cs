@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,28 @@ namespace Project2_Images.Pages.Images
 
         [BindProperty]
         public Image Image { get; set; }
+        //method to save images to db
+        public async Task<IActionResult> UploadImage()
+        {
+            foreach (var file in Request.Form.Files)
+            {
+                Image img = new()
+                {
+                    FileName = file.FileName
+                };
+
+                MemoryStream ms = new();
+                file.CopyTo(ms);
+                img.AdvertisementAsset = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+
+                _context.Image.Add(img);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToPage("./Index");
+        }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
