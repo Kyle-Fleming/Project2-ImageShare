@@ -6,6 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Project2_Images.Data;
 
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 namespace Project2_Images
 {
     public class Startup
@@ -20,11 +26,15 @@ namespace Project2_Images
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddRazorPages();
 
             services.AddDbContext<Project2_ImagesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Project2_ImagesContext")));
+                  options.UseSqlServer(Configuration.GetConnectionString("Project2_ImagesContext")));
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Project2_ImagesContext>();
+                        services.AddRazorPages();
+
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +43,8 @@ namespace Project2_Images
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
+
             }
             else
             {
@@ -47,6 +59,7 @@ namespace Project2_Images
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
