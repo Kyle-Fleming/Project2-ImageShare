@@ -30,6 +30,5 @@ namespace Project2_Images.Models
         [DataType(DataType.Upload)]
         public byte[] AdvertisementAsset { get; set; }
 
-        public DbSet<User> GrantedAccess { get; set; }
     }
 }

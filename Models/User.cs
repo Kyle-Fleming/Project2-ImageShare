@@ -14,9 +14,7 @@ namespace Project2_Images.Models
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
-        [Display(Name = "Password")]
-        [DataType(DataType.Password)]
-        public string UserPassword { get; set; }
+        
 
 
         

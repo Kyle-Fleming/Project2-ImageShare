@@ -26,16 +26,16 @@ namespace Project2_Images
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddRazorPages();
 
-            services.AddDbContext<Project2_ImagesContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                   options.UseSqlServer(Configuration.GetConnectionString("Project2_ImagesContext")));
+            
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<Project2_ImagesContext>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-           //services.AddDatabaseDeveloperPageExceptionFilter();
-           //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<Project2_ImagesContext>();
+         //   services.AddDatabaseDeveloperPageExceptionFilter();
+           // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddRazorPages();
 
         }
 
@@ -45,7 +45,7 @@ namespace Project2_Images
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
+               // app.UseMigrationsEndPoint();
 
             }
             else
@@ -60,15 +60,12 @@ namespace Project2_Images
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                    endpoints.MapRazorPages();
+                endpoints.MapRazorPages();
             });
         }
     }

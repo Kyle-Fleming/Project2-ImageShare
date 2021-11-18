@@ -10,7 +10,7 @@ using System;
 
 namespace Advertising.Data.Migrations
 {
-    [DbContext(typeof(Project2_ImagesContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
