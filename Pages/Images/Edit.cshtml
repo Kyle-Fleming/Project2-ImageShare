@@ -51,7 +51,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image.AdvertisementAsset" class="control-label"></label>
-                <input asp-for="Image.AdvertisementAsset" class="form-control" type="file"/>
+                <input asp-for="Image.AdvertisementAsset" class="form-control" type="file" name="select image"
+                       accept="image/bmp, image/ico, image/jpeg, image/jpg, image/gif, image/tiff, image/png" 
+                      onchange="DisplayFilesToUpload()"/>
                 <span asp-validation-for="Image.AdvertisementAsset" class="text-danger"></span>
             </div>
             <div class="form-group">
