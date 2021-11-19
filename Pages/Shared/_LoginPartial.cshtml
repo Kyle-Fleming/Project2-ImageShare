@@ -6,16 +6,26 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            <form class="form-inline" asp-area="" asp-page="/Images/Index" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="get">
+                <button type="submit" class="nav-link btn btn-link text-dark">Image Collection</button>
+            </form>
+        </li>
+
+        <li class="nav-item">
+            <form class="form-inline" asp-area="" asp-page="/Images/Create" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="get">
+                <button type="submit" class="nav-link btn btn-link text-dark">Upload Image</button>
+            </form>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">User: @User.Identity.Name</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Images/Index">Image</a>
-        </li>
+
+
     }
     else
     {

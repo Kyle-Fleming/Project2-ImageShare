@@ -10,20 +10,20 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Image[0].OwnerID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image[0].FileName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image[0].CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image[0].Uploader)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image[0].CapturedBy)
@@ -44,16 +44,10 @@
 @foreach (var item in Model.Image) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.OwnerID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FileName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Uploader)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CapturedBy)
