@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Project2_Images.Models
     public class Image
     {
         public int ID { get; set; }
+
+        [Display(Name ="User to share with (optional)")]
         public string OwnerID { get; set; }
         
         [Display(Name = "File name")]
@@ -31,5 +34,7 @@ namespace Project2_Images.Models
         [Display(Name = "Image File")]
         [DataType(DataType.Upload)]
         public byte[] AdvertisementAsset { get; set; }
+
+        //public IFormFile Picture { get; set; }
     }
 }

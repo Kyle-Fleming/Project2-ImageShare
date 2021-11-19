@@ -32,9 +32,10 @@ namespace Project2_Images.Pages.Images
         {
             if (!ModelState.IsValid)
             {
+
                 return Page();
             }
-
+            
             _context.Image.Add(Image);
             await _context.SaveChangesAsync();
 

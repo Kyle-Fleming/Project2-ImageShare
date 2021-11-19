@@ -32,15 +32,6 @@ namespace Project2_Images.Pages.Images
         {
             var images = from i in _context.Image 
                          select i;
-
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                images = images.Where(s => s.CapturedBy.Contains(SearchString));
-            }
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                images = images.Where(s => s.GeoTag.Contains(SearchString));
-            }
             if (!string.IsNullOrEmpty(SearchString))
             {
                 images = images.Where(s => s.Tags.Contains(SearchString));
