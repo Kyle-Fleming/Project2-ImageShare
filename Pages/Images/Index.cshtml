@@ -39,7 +39,8 @@
                 @Html.DisplayNameFor(model => model.Image[0].Tags)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image[0].AdvertisementAsset)
+                @Html.DisplayNameFor(model => model.Image[0].URL)
+                
             </th>
             <th></th>
         </tr>
@@ -66,7 +67,7 @@
                         @Html.DisplayFor(modelItem => item.Tags)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AdvertisementAsset)
+                        @Html.DisplayFor(modelItem => item.URL)
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
