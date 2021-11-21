@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image.URL" class="control-label" for="file">Select File</label>
-                <input asp-for="Image.URL" type="file" id="file" name="select image" class=""
+                <input asp-for="Image.URL" type="file" id="advertisementAsset" name="select image" class=""
                        accept="image/bmp, image/ico, image/jpeg, image/jpg, image/gif, image/tiff, image/png"
                        onchange="DisplayFilesToUpload()" />
             </div>
@@ -87,7 +87,7 @@
     }
 
     function DisplayFilesToUpload() {
-        var element = document.getElementById("file");
+        var element = document.getElementById("advertisementAsset");
         var html = "";
         html = "<h3>Image to upload:</h3>";
         document.getElementById("FilesToUpload").innerHTML = html;

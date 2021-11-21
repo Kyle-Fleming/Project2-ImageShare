@@ -51,7 +51,7 @@ namespace Project2_Images.Pages.Images
         }        
 
         
-        public async Task<IActionResult> OnPostAsync(IFormCollection form)
+        public async Task<IActionResult> OnPostAsync()
         {
             try
             {
@@ -60,14 +60,16 @@ namespace Project2_Images.Pages.Images
                     return Page();
                 }
 
+                /*
+                var filestoup = formFiles.GetFile("advertisementAsset");
                 //fix this because the image is not stored in "Files"
-                var file = form.Files[0];
+                //var file = form.Files[0];
 
-                CloudBlockBlob blob = BlobContainer.GetBlockBlobReference(file?.FileName);
-                blob.Properties.ContentType = file?.ContentType;
-                await blob.UploadFromStreamAsync(file.OpenReadStream());
-                Image.URL = $"{BlobContainer.StorageUri.PrimaryUri}/{file?.FileName}";
-                
+                CloudBlockBlob blob = BlobContainer.GetBlockBlobReference(filestoup?.FileName);
+                blob.Properties.ContentType = filestoup?.ContentType;
+                await blob.UploadFromStreamAsync(filestoup.OpenReadStream());
+                Image.URL = $"{BlobContainer.StorageUri.PrimaryUri}/{filestoup?.FileName}";
+                */
                 _context.Image.Add(Image);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Image upload success";
