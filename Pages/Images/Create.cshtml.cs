@@ -51,7 +51,7 @@ namespace Project2_Images.Pages.Images
         }        
 
         
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(IFormFile file)
         {
             try
             {
@@ -60,20 +60,29 @@ namespace Project2_Images.Pages.Images
                     return Page();
                 }
 
-                /*
-                var filestoup = formFiles.GetFile("advertisementAsset");
-                //fix this because the image is not stored in "Files"
-                //var file = form.Files[0];
 
-                CloudBlockBlob blob = BlobContainer.GetBlockBlobReference(filestoup?.FileName);
-                blob.Properties.ContentType = filestoup?.ContentType;
-                await blob.UploadFromStreamAsync(filestoup.OpenReadStream());
-                Image.URL = $"{BlobContainer.StorageUri.PrimaryUri}/{filestoup?.FileName}";
-                */
-                _context.Image.Add(Image);
-                await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "Image upload success";
-                return RedirectToPage("./Index");
+                IFormFileCollection advertisementAsset = Request.Form.Files;
+                var filestoup = advertisementAsset.GetFile("uploaded-image");
+                
+                if(filestoup !=null && file.Length > 0)
+                {
+                    CloudBlockBlob blob = BlobContainer.GetBlockBlobReference(filestoup?.FileName);
+                    blob.Properties.ContentType = filestoup?.ContentType;
+                    await blob.UploadFromStreamAsync(filestoup.OpenReadStream());
+                    Image.URL = $"{BlobContainer.StorageUri.PrimaryUri}/{filestoup?.FileName}";
+                    _context.Image.Add(Image);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Image upload success";
+                    return RedirectToPage("./Index");
+                }
+                else
+                {
+                    _context.Image.Add(Image);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Image upload success";
+                    return RedirectToPage("./Index");
+                }
+                
             }
             catch (Exception)
             {
