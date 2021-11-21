@@ -4,9 +4,9 @@
       "type": "mssql",
       "connectionId": "ConnectionStrings:DefaultConnection"
     },
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:Project2_ImagesContext"
+    "storage1": {
+      "type": "storage",
+      "connectionId": "ConnectionStrings:AzureStorageConnectionString"
     }
   }
 }

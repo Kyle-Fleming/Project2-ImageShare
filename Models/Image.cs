@@ -32,9 +32,6 @@ namespace Project2_Images.Models
         public string Tags { get; set; }
 
         [Display(Name = "Image File")]
-        [DataType(DataType.Upload)]
-        public byte[] AdvertisementAsset { get; set; }
-
-        //public IFormFile Picture { get; set; }
+        public string URL { get; set; }
     }
 }

@@ -49,14 +49,23 @@
                 <span asp-validation-for="Image.Tags" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image.AdvertisementAsset" class="control-label"></label>
-                <input asp-for="Image.AdvertisementAsset" id="file" type="file" name="select image"
-                       accept="image/bmp, image/ico, image/jpeg, image/jpg, image/gif, image/tiff, image/png" 
-                      onchange="DisplayFilesToUpload()" />
-                <span asp-validation-for="Image.AdvertisementAsset" class="text-danger"></span>
+                <label asp-for="Image.URL" class="control-label" for="file">Select File</label>
+                <input asp-for="Image.URL" type="file" id="advertisementAsset" name="select image" class=""
+                       accept="image/bmp, image/ico, image/jpeg, image/jpg, image/gif, image/tiff, image/png"
+                       onchange="DisplayFilesToUpload()" />
             </div>
+            
+            <p>
+                <img src="" id="uploaded-image" width="200" />
+            </p>
+            
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <p id="FilesToUpload"></p>
+            </div>
+            <p id="FilesToUpload"></p>
+            
+            <div class="form-group">
+                <input type="submit" value="Upload" class="btn btn-primary"  />
             </div>
         </form>
     </div>
@@ -65,7 +74,27 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0])
+        {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#uploaded-image').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
+    function DisplayFilesToUpload() {
+        var element = document.getElementById("advertisementAsset");
+        var html = "";
+        html = "<h3>Image to upload:</h3>";
+        document.getElementById("FilesToUpload").innerHTML = html;
+        readURL(element);
+    }
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
